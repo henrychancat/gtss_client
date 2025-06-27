@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    /*header*/
+     header {
+      background-color: #003366;
+      color: white;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #66ccff;
+    }
+	.user-image{position:relative;}
+	.user-image span{position:absolute;background:white;color:#333;top:48px;left:25px;padding:0.25rem 0;border-radius:3px;width:100%;text-align:center;display:none;}
+	.user-image b{font-weight:normal;margin-left:0.5em;position:relative;top:2px;}
+	.user-image:hover span{display:block;color: #003366;}
+	.user-image span:hover{text-decoration:underline;}
+    .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 998; }
+	.user-image img{width:24px;height:24px;border-radius:50%;display:inline-block;}
+    #languageSwitcher {
+      background-color: white;
+      color: #003366;
+      font-weight: 600;
+    }
+	.mobile-menu{display:none;}
+	/*footer*/
+	.underline{text-decoration:none;}
+	.underline:hover{text-decoration:underline;}
+	
+    .lang-switcher {
+      margin-left: 30px;
+    }
+
+    .lang-switcher select {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+    }
+	@media (max-width: 640px) {
+	/*header*/
+	header{position:relative;}
+	header nav{position:absolute;width:100%;margin:0;left:0;top:60px;background:rgba(0,51,102,0.9);padding:1rem;border-top:#666 1px solid;}
+	.mobile-menu{display:block;}
+	.user-image span{position:relative;display:inline-block;left:0;top:0;background:none; color:rgba(255,255,255,0.7);float:right;text-decoration:underline;width:auto;}
+	/*footer*/
+	.underline{display:block;}
+	.underline span{display:none;}
+	footer p:first-child{margin-bottom:0.5em;}
+	.mobile-menu{background:rgb(17 24 39);padding:0.3rem 0.5em;border-radius:5px;}
+	.mobile-menu b{display:block;border-radius:3px;background-color:white;width:30px;height:3px;margin:3px 0;}
+	header nav.flex{display:none;}
+	header nav a{display:block;text-decoration: none;font-weight: 500;transition: color 0.3s;margin:0 !important;padding:0.5rem; }
+	#languageSwitcher{margin:0.5rem !important;width:-webkit-fill-available;}
+	
+	/*正文*/
+	.hero{padding:5em 20px;}
+	.hero h1{font-size:2.2em;}
+	.feature{padding:1rem;}
+	.features{gap:1.5rem;}
+}
+  </style>
+</head>
+<body>
+
+ <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 shadow">
+    <div class="text-xl font-bold">GTSS</div>
+    <nav class="space-x-6 flex items-center">
+      <a href="index.html">Home</a>
+      <a href="about_en.html">About</a>
+      <a href="booking.html">Booking</a>
+      <a href="login.html" class="text-blue-300 font-semibold">Login</a>
+	  
+	  <!-- <a href="#" class="user-image"><img src="https://img-s.msn.cn/tenant/amp/entityid/AA11fKUj?w=20&h=0&q=90&m=6&f=png&u=t"><b>UserName</b><span>Logout</span></a>  --> <!--登录后显示用户头像，这里需要写一下鼠标移入头像显示logout的功能-->
+	  
+	  
+      <select id="languageSwitcher" class="ml-6 px-2 py-1 border rounded">
+        <option value="en">EN</option>
+        <option value="zh">中文</option>
+        <option value="jp">日本語</option>
+      </select>
+    </nav>
+	<!--移动端按钮-->
+	  <button class="mobile-menu"><b>&nbsp;</b><b>&nbsp;</b><b>&nbsp;</b></button>
+	</div>
+  </header>
+
+  <!-- Login Form Container -->
+  <div class="min-h-screen flex items-center justify-center pt-12">
+    <div class="bg-white p-8 rounded shadow-lg w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-6 text-center" id="login-title">Sign up</h1>
+
+
+      <!-- Email Login -->
+      <form>
+        <div class="mb-4">
+          <label class="block font-medium mb-1" for="email" id="email-label">Your Email</label>
+          <input type="email" id="email" class="w-full border px-4 py-2 rounded" placeholder="you@example.com" required>
+        </div>
+		
+        <div class="mb-4">
+          <label class="block font-medium mb-1" for="password" id="password-label">Your Password</label>
+          <input type="password" id="password" class="w-full border px-4 py-2 rounded" placeholder="••••••••" required>
+        </div>
+		<div class="mb-4">
+          <label class="block font-medium mb-1" for="password" id="password-label">Repeat Your Password</label>
+          <input type="password" id="password" class="w-full border px-4 py-2 rounded" placeholder="••••••••" required>
+        </div>
+		<div class="mb-4">
+          <label class="block font-medium mb-1" for="email" id="email-label">Enter Verification Code</label>
+          <input type="text" id="" class="w-full border px-4 py-2 rounded" placeholder="Verification Code" required style="width:65%">
+		  <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700" style="width:30%;float:right;">Send</button>
+        </div>
+		<br/>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Sign Up</button>
+      </form>
+      <p class="text-center text-sm mt-6">
+        Have an account? <a href="#" class="text-blue-600 hover:underline">Login</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center p-6 mt-12">
+    <p>© 2025 GTSS Language School Ⓡ </p>
+	<p>
+		<a href="#" class="underline">Privacy Policy<span> | </span></a>
+		<a href="#" class="underline"> Terms of Service<span> | </span></a>
+		<a href="#" class="underline"> Privacy Policy<span> | </span></a>
+		<a href="#" class="underline"> 特定商取引法に基づく表記</a>
+	</p>
+  </footer>
+ <!---引入JQUERY库-->
+ <script src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+  <script>
+   <!--移动端点击展现menu-->
+   $(".mobile-menu").click(function() {
+	$("nav.items-center").slideToggle();
+});
+    
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirm & Pay | GTSS payment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /*header*/
+     header {
+      background-color: #003366;
+      color: white;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #66ccff;
+    }
+	.user-image{position:relative;}
+	.user-image span{position:absolute;background:white;color:#333;top:48px;left:25px;padding:0.25rem 0;border-radius:3px;width:100%;text-align:center;display:none;}
+	.user-image b{font-weight:normal;margin-left:0.5em;position:relative;top:2px;}
+	.user-image:hover span{display:block;color: #003366;}
+	.user-image span:hover{text-decoration:underline;}
+    .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 998; }
+	.user-image img{width:24px;height:24px;border-radius:50%;display:inline-block;}
+    #languageSwitcher {
+      background-color: white;
+      color: #003366;
+      font-weight: 600;
+    }
+	.mobile-menu{display:none;}
+	/*footer*/
+	.underline{text-decoration:none;}
+	.underline:hover{text-decoration:underline;}
+	
+    .lang-switcher {
+      margin-left: 30px;
+    }
+
+    .lang-switcher select {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+    }
+	@media (max-width: 640px) {
+	/*header*/
+	header{position:relative;}
+	header nav{position:absolute;width:100%;margin:0;left:0;top:60px;background:rgba(0,51,102,0.9);padding:1rem;border-top:#666 1px solid;}
+	.mobile-menu{display:block;}
+	.user-image span{position:relative;display:inline-block;left:0;top:0;background:none; color:rgba(255,255,255,0.7);float:right;text-decoration:underline;width:auto;}
+	/*footer*/
+	.underline{display:block;}
+	.underline span{display:none;}
+	footer p:first-child{margin-bottom:0.5em;}
+	.mobile-menu{background:rgb(17 24 39);padding:0.3rem 0.5em;border-radius:5px;}
+	.mobile-menu b{display:block;border-radius:3px;background-color:white;width:30px;height:3px;margin:3px 0;}
+	header nav.flex{display:none;}
+	header nav a{display:block;text-decoration: none;font-weight: 500;transition: color 0.3s;margin:0 !important;padding:0.5rem; }
+	#languageSwitcher{margin:0.5rem !important;width:-webkit-fill-available;}
+	
+}
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 shadow">
+    <div class="text-xl font-bold">GTSS</div>
+    <nav class="space-x-6 flex items-center">
+      <a href="index.html">Home</a>
+      <a href="about_en.html">About</a>
+      <a href="booking.html">Booking</a>
+      <a href="login.html">Login</a>
+	  
+	  <!-- <a href="#" class="user-image"><img src="https://img-s.msn.cn/tenant/amp/entityid/AA11fKUj?w=20&h=0&q=90&m=6&f=png&u=t"><b>UserName</b><span>Logout</span></a>  --> <!--登录后显示用户头像，这里需要写一下鼠标移入头像显示logout的功能-->
+	  
+	  
+      <select id="languageSwitcher" class="ml-6 px-2 py-1 border rounded">
+        <option value="en">EN</option>
+        <option value="zh">中文</option>
+        <option value="jp">日本語</option>
+      </select>
+    </nav>
+	<!--移动端按钮-->
+	  <button class="mobile-menu"><b>&nbsp;</b><b>&nbsp;</b><b>&nbsp;</b></button>
+	</div>
+  </header>
+
+  <!-- Payment Form -->
+  <section class="max-w-xl mx-auto p-10 mt-10 bg-white shadow rounded">
+    <h1 class="text-2xl font-semibold mb-6" id="pay-title">Confirm & Pay</h1>
+
+    <div class="mb-4">
+      <p><strong id="course-label">Course:</strong> Intro to Snowboarding</p>
+      <p><strong id="time-label">Time:</strong> Jan 21, 2025 @ 14:00</p>
+      <p><strong id="price-label">Price:</strong> ¥300</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 font-medium" for="name" id="name-label">Your Name</label>
+      <input type="text" id="name" class="w-full border px-4 py-2 rounded" placeholder="Enter your name">
+    </div>
+
+    <div class="mb-6">
+      <label class="block mb-1 font-medium" for="email" id="email-label">Email Address</label>
+      <input type="email" id="email" class="w-full border px-4 py-2 rounded" placeholder="you@example.com">
+    </div>
+
+    <div class="mb-6">
+      <label class="block mb-2 font-medium" id="payment-label">Choose a Payment Method</label>
+      <div class="flex flex-col gap-3">
+        <button class="w-full border px-4 py-2 rounded hover:bg-gray-100">💳 Stripe (Credit Card)</button>
+        <button class="w-full border px-4 py-2 rounded hover:bg-gray-100">📱 WeChat Pay</button>
+        <button class="w-full border px-4 py-2 rounded hover:bg-gray-100">💬 LINE Pay</button>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700" id="confirm-button">Confirm Payment</button>
+    </div>
+  </section>
+
+ <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center p-6 mt-12">
+    <p>© 2025 GTSS Language School Ⓡ </p>
+	<p>
+		<a href="#" class="underline">Privacy Policy<span> | </span></a>
+		<a href="#" class="underline"> Terms of Service<span> | </span></a>
+		<a href="#" class="underline"> Privacy Policy<span> | </span></a>
+		<a href="#" class="underline"> 特定商取引法に基づく表記</a>
+	</p>
+  </footer>
+ <!---引入JQUERY库-->
+ <script src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+  <script>
+   <!--移动端点击展现menu-->
+   $(".mobile-menu").click(function() {
+	$("nav.items-center").slideToggle();
+});
+    const translations = {
+      en: {
+        payTitle: "Confirm & Pay",
+        courseLabel: "Course:",
+        timeLabel: "Time:",
+        priceLabel: "Price:",
+        nameLabel: "Your Name",
+        emailLabel: "Email Address",
+        paymentLabel: "Choose a Payment Method",
+        confirmButton: "Confirm Payment"
+      },
+      zh: {
+        payTitle: "确认并支付",
+        courseLabel: "课程：",
+        timeLabel: "时间：",
+        priceLabel: "价格：",
+        nameLabel: "姓名",
+        emailLabel: "邮箱",
+        paymentLabel: "请选择支付方式",
+        confirmButton: "确认支付"
+      },
+      jp: {
+        payTitle: "確認と支払い",
+        courseLabel: "コース：",
+        timeLabel: "時間：",
+        priceLabel: "料金：",
+        nameLabel: "お名前",
+        emailLabel: "メールアドレス",
+        paymentLabel: "支払い方法を選択",
+        confirmButton: "支払いを確認する"
+      }
+    };
+
+    document.getElementById('languageSwitcher').addEventListener('change', (e) => {
+      const lang = e.target.value;
+      const t = translations[lang];
+      document.getElementById('pay-title').innerText = t.payTitle;
+      document.getElementById('course-label').innerText = t.courseLabel;
+      document.getElementById('time-label').innerText = t.timeLabel;
+      document.getElementById('price-label').innerText = t.priceLabel;
+      document.getElementById('name-label').innerText = t.nameLabel;
+      document.getElementById('email-label').innerText = t.emailLabel;
+      document.getElementById('payment-label').innerText = t.paymentLabel;
+      document.getElementById('confirm-button').innerText = t.confirmButton;
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Page - Studio Booking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #66ccff;
+    }
+	.user-image{position:relative;}
+	.user-image span{position:absolute;background:white;color:#333;top:48px;left:25px;padding:0.25rem 0;border-radius:3px;width:100%;text-align:center;display:none;}
+	.user-image b{font-weight:normal;margin-left:0.5em;position:relative;top:2px;}
+	.user-image:hover span{display:block;color: #003366;}
+	.user-image span:hover{text-decoration:underline;}
+    .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 998; }
+	.user-image img{width:24px;height:24px;border-radius:50%;display:inline-block;}
+    #languageSwitcher {
+      background-color: white;
+      color: #003366;
+      font-weight: 600;
+    }
+	.mobile-menu{display:none;}
+	.title{background:#333;color:white;text-align:center;padding:1em 0;font-size:2em;}
+	nav.tabs { display: flex; justify-content: center; background: #f0f0f0; }
+    nav.tabs button { padding: 1em; border: none; background: none; cursor: pointer; }
+    nav.tabs button.active { border-bottom: 2px solid #007bff; font-weight: bold; }
+    section { display: none; padding: 2em; }
+    section.active { display: block;background:white; }
+    .booking-item { border-bottom: 1px solid #ccc; padding: 1em 0; }
+    .booking-item button { margin-left: 10px; }
+    form input, form button { display: block; margin: 10px 0; padding: 0.5em; width: 100%;margin-bottom:1em; }
+    .confirmation-dialog { display: none; position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); background: white; border: 1px solid #ccc; padding: 1.5em; z-index: 999; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+	
+	/*footer*/
+	.underline{text-decoration:none;}
+	.underline:hover{text-decoration:underline;}
+@media (max-width: 640px) {
+	/*header*/
+	header{position:relative;}
+	header nav{position:absolute;width:100%;margin:0;left:0;top:60px;background:rgba(0,51,102,0.9);padding:1rem;border-top:#666 1px solid;}
+	.mobile-menu{display:block;}
+	.user-image span{position:relative;display:inline-block;left:0;top:0;background:none; color:rgba(255,255,255,0.7);float:right;text-decoration:underline;width:auto;}
+	/*footer*/
+	.underline{display:block;}
+	.underline span{display:none;}
+	footer p:first-child{margin-bottom:0.5em;}
+	.mobile-menu{background:rgb(17 24 39);padding:0.3rem 0.5em;border-radius:5px;}
+	.mobile-menu b{display:block;border-radius:3px;background-color:white;width:30px;height:3px;margin:3px 0;}
+	header nav.flex{display:none;}
+	header nav a{display:block;text-decoration: none;font-weight: 500;transition: color 0.3s;margin:0 !important;padding:0.5rem; }
+	#languageSwitcher{margin:0.5rem !important;width:-webkit-fill-available;}
+}
+	
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 shadow">
+    <div class="text-xl font-bold">GTSS</div>
+    <nav class="space-x-6 flex items-center">
+      <a href="index.html">Home</a>
+      <a href="about_en.html">About</a>
+      <a href="booking.html">Booking</a>
+      <a href="login.html" class="text-blue-300 font-semibold">Login</a>
+	  
+	  <!-- <a href="#" class="user-image"><img src="https://img-s.msn.cn/tenant/amp/entityid/AA11fKUj?w=20&h=0&q=90&m=6&f=png&u=t"><b>UserName</b><span>Logout</span></a>  --> <!--登录后显示用户头像，这里需要写一下鼠标移入头像显示logout的功能-->
+	  
+	  
+      <select id="languageSwitcher" class="ml-6 px-2 py-1 border rounded">
+        <option value="en">EN</option>
+        <option value="zh">中文</option>
+        <option value="jp">日本語</option>
+      </select>
+    </nav>
+	<!--移动端按钮-->
+	  <button class="mobile-menu"><b>&nbsp;</b><b>&nbsp;</b><b>&nbsp;</b></button>
+	</div>
+  </header>
+  
+  <!--title -->
+ <div class="title">
+    <h1>My Page - Studio Booking</h1>
+ </div>
+ 
+ <nav class="tabs">
+    <button onClick="showTab('view')" class="active">View Bookings</button>
+    <button onClick="showTab('edit')">Edit Profile</button>
+  </nav>
+
+  <main style="padding:3rem 0;">
+    <section id="view" class="active py-16 px-6 max-w-5xl mx-auto shadow-lg">
+      <h2 class="text-2xl font-semibold text-center mb-8">Upcoming & Past Bookings</h2>
+
+      <div class="booking-item">
+        <strong>Studio A</strong><br>
+        Date: 2025-06-15<br>
+        Time: 10:00 - 11:00<br>
+        Status: Confirmed
+        <button onClick="openCancelDialog('Studio A - 2025-06-15 10:00')">Cancel</button>
+      </div>
+
+      <div class="booking-item">
+        <strong>Studio B</strong><br>
+        Date: 2025-05-10<br>
+        Time: 13:00 - 14:00<br>
+        Status: Canceled
+      </div>
+    </section>
+
+    <section id="edit" class="max-w-xl mx-auto shadow-lg">
+      <h2 class="text-2xl font-semibold text-center mb-8">Edit Profile</h2>
+      <form onSubmit="alert('Profile updated!'); return false;">
+        <input type="text" placeholder="Full Name" required class="w-full border px-4 py-2 rounded">
+        <input type="email" placeholder="Email" required class="w-full border px-4 py-2 rounded">
+        <input type="tel" placeholder="Phone Number" required class="w-full border px-4 py-2 rounded">
+        <input type="password" placeholder="New Password" class="w-full border px-4 py-2 rounded">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700" style="margin-top:5em">Update Profile</button>
+      </form>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="confirmation-dialog" id="cancelDialog">
+    <p id="cancelText">Are you sure you want to cancel this booking?</p>
+    <button onClick="confirmCancel()">Yes, Cancel</button>
+    <button onClick="closeCancelDialog()">No</button>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center p-6 mt-12">
+    <p>© 2025 GTSS Language School Ⓡ </p>
+	<p>
+		<a href="#" class="underline">Privacy Policy<span> | </span></a>
+		<a href="#" class="underline"> Terms of Service<span> | </span></a>
+		<a href="#" class="underline"> Privacy Policy<span> | </span></a>
+		<a href="#" class="underline"> 特定商取引法に基づく表記</a>
+	</p>
+  </footer>
+ <!---引入JQUERY库-->
+ <script src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+  <script>
+   $(".mobile-menu").click(function() {
+	$("nav.items-center").slideToggle();
+});
+ <!--Tabbar-->
+    function showTab(tab) {
+      document.querySelectorAll('nav.tabs button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.querySelector('nav.tabs button[onclick="showTab(\'' + tab + '\')"]').classList.add('active');
+      document.getElementById(tab).classList.add('active');
+    }
+
+    let cancelTarget = '';
+    function openCancelDialog(bookingInfo) {
+      cancelTarget = bookingInfo;
+      document.getElementById('cancelText').textContent = `Are you sure you want to cancel this booking?\n${bookingInfo}`;
+      document.getElementById('cancelDialog').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeCancelDialog() {
+      document.getElementById('cancelDialog').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    function confirmCancel() {
+      alert(`Booking canceled: ${cancelTarget}`);
+      closeCancelDialog();
+      // In real app: send request to backend to cancel booking
+    }
+ <!-- Language Switch Script -->
+    const translations = {
+      en: {
+        loginTitle: "Log in to Your Account",
+        emailLabel: "Email",
+        passwordLabel: "Password",
+        rememberText: "Remember me",
+        forgotText: "Forgot Password?",
+        loginBtn: "Login",
+        signupText: "Don��t have an account? Sign up"
+      },
+      zh: {
+        loginTitle: "登录您的账户",
+        emailLabel: "邮箱",
+        passwordLabel: "密码",
+        rememberText: "记住我",
+        forgotText: "忘记密码？",
+        loginBtn: "登录",
+        signupText: "没有账户？<a href=\"#\" class=\"text-blue-600 hover:underline\">立即注册</a>"
+      },
+      jp: {
+        loginTitle: "アカウントにログイン",
+        emailLabel: "メールアドレス",
+        passwordLabel: "パスワード",
+        rememberText: "ログイン情報を記憶する",
+        forgotText: "パスワードをお忘れですか？",
+        loginBtn: "ログイン",
+        signupText: "アカウントをお持ちでない方は <a href=\"#\" class=\"text-blue-600 hover:underline\">こちら</a>"
+      
+      }
+    };
+
+    document.getElementById('languageSwitcher').addEventListener('change', (e) => {
+      const lang = e.target.value;
+      const t = translations[lang];
+      document.getElementById('login-title').innerText = t.loginTitle;
+      document.getElementById('email-label').innerText = t.emailLabel;
+      document.getElementById('password-label').innerText = t.passwordLabel;
+      document.getElementById('remember-text').innerText = t.rememberText;
+      document.getElementById('forgot-text').innerText = t.forgotText;
+      document.getElementById('login-btn').innerText = t.loginBtn;
+      document.getElementById('signup-text').innerHTML = t.signupText;
+    });
+  </script>
+
+</body>
+</html>
