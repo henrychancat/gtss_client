@@ -1,43 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GTSS | Language Booking Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    body {
+      background-color: #ffffff;
+      color: #333;
+    }
+	/*header*/
+     header {
+      background-color: #003366;
+      color: white;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #66ccff;
+    }
+	.user-image{position:relative;}
+	.user-image span{position:absolute;background:white;color:#333;top:48px;left:25px;padding:0.25rem 0;border-radius:3px;width:100%;text-align:center;display:none;}
+	.user-image b{font-weight:normal;margin-left:0.5em;position:relative;top:2px;}
+	.user-image:hover span{display:block;color: #003366;}
+	.user-image span:hover{text-decoration:underline;}
+    .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 998; }
+	.user-image img{width:24px;height:24px;border-radius:50%;display:inline-block;}
+    #languageSwitcher {
+      background-color: white;
+      color: #003366;
+      font-weight: 600;
+    }
+	.mobile-menu{display:none;}
+	/*footer*/
+	.underline{text-decoration:none;}
+	.underline:hover{text-decoration:underline;}
+	
+    .lang-switcher {
+      margin-left: 30px;
+    }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    .lang-switcher select {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+    }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    .hero {
+      background: linear-gradient(rgba(0, 51, 102, 0.6), rgba(0, 51, 102, 0.6)), url('https://images.unsplash.com/photo-1603575448362-cb0a2bce0b49?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .features {
+      max-width: 1200px;
+      margin: 60px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    .feature {
+      background: #f2f7fc;
+      padding: 20px;
+      border-left: 5px solid #003366;
+      border-radius: 8px;
+    }
+
+    .feature h3 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+@media (max-width: 1024px) {
+.hero{height:auto;padding:10em 20px;}
+}
+@media (max-width: 640px) {
+	/*header*/
+	header{position:relative;}
+	header nav{position:absolute;width:100%;margin:0;left:0;top:60px;background:rgba(0,51,102,0.9);padding:1rem;border-top:#666 1px solid;}
+	.mobile-menu{display:block;}
+	.user-image span{position:relative;display:inline-block;left:0;top:0;background:none; color:rgba(255,255,255,0.7);float:right;text-decoration:underline;width:auto;}
+	/*footer*/
+	.underline{display:block;}
+	.underline span{display:none;}
+	footer p:first-child{margin-bottom:0.5em;}
+	.mobile-menu{background:rgb(17 24 39);padding:0.3rem 0.5em;border-radius:5px;}
+	.mobile-menu b{display:block;border-radius:3px;background-color:white;width:30px;height:3px;margin:3px 0;}
+	header nav.flex{display:none;}
+	header nav a{display:block;text-decoration: none;font-weight: 500;transition: color 0.3s;margin:0 !important;padding:0.5rem; }
+	#languageSwitcher{margin:0.5rem !important;width:-webkit-fill-available;}
+	
+	/*正文*/
+	.hero{padding:5em 20px;}
+	.hero h1{font-size:2.2em;}
+	.feature{padding:1rem;}
+	.features{gap:1.5rem;}
+}
+
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 shadow">
+    <div class="text-xl font-bold">GTSS</div>
+    <nav class="space-x-6 flex items-center">
+      <a href="index.html" class="text-blue-300 font-semibold">Home</a>
+      <a href="about.html">About</a>
+      <a href="booking.html">Booking</a>
+      <a href="login.html">Login</a>
+	  <!-- <a href="#" class="user-image"><img src="https://img-s.msn.cn/tenant/amp/entityid/AA11fKUj?w=20&h=0&q=90&m=6&f=png&u=t"><b>UserName</b><span>Logout</span></a>  --> <!--登录后显示用户头像，这里需要写一下鼠标移入头像显示logout的功能-->
+	  
+      <select id="languageSwitcher" class="ml-6 px-2 py-1 border rounded">
+        <option value="en">EN</option>
+        <option value="zh-CN">中文（简体）</option>
+        <option value="zh-TW">中文（繁體）</option>
+        <option value="ja">日本語</option>
+      </select>
+    </nav>
+	<!--移动端按钮-->
+	  <button class="mobile-menu"><b>&nbsp;</b><b>&nbsp;</b><b>&nbsp;</b></button>
+	</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Smart Booking for Global Educators</h1>
+      <p>Empower your language school or service business with our all-in-one booking, payment, and marketing platform. Seamlessly integrated across WeChat, Line, Instagram and more.</p>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Smart Booking Calendar</h3>
+      <p>Book classes by instructor or time, sync with Google/Apple Calendar, and view real-time availability.</p>
+    </div>
+    <div class="feature">
+      <h3>Cross-Platform QR Booking</h3>
+      <p>Supports QR code links from Line, WeChat, Instagram to guide users to schedule easily from any device.</p>
+    </div>
+    <div class="feature">
+      <h3>Multi-Currency Payment</h3>
+      <p>Pay via Stripe, PayPal, WeChat Pay, or Apple Pay. Automatically generate receipts and booking summaries.</p>
+    </div>
+    <div class="feature">
+      <h3>Auto Notifications</h3>
+      <p>Get reminders via SMS, email, and platform messages. Push updates via Line and WeChat official accounts.</p>
+    </div>
+    <div class="feature">
+      <h3>Admin Dashboard</h3>
+      <p>Manage users, view stats, configure teachers, and customize price models with ease.</p>
+    </div>
+    <div class="feature">
+      <h3>Marketing Tools</h3>
+      <p>Promote new courses, offer coupons, send announcements across all platforms from one interface.</p>
+    </div>
+  </section>
+<div id="google_translate_element" style="display:none;"></div>
+ <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center p-6 mt-12">
+    <p>© 2025 GTSS Language School Ⓡ </p>
+	<p>
+		<a href="terms.html" class="underline"> Terms of Service<span> | </span></a>
+		<a href="privacy.html" class="underline"> Privacy Policy<span> | </span></a>
+		<a href="trading.html" class="underline"> 特定商取引法に基づく表記</a>
+	</p>
+  </footer>
+  
+ <!---引入JQUERY库-->
+ <script src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+  <script>
+   <!---移动端点击展现menu-->
+   $(".mobile-menu").click(function() {
+	$("nav.items-center").slideToggle();
+});
+</script>
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,zh-CN,zh-TW,ja',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  function fireNativeChangeEvent(el) {
+    const ev = new Event('change', { bubbles: true });
+    el.dispatchEvent(ev);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document
+      .getElementById('languageSwitcher')
+      .addEventListener('change', function() {
+        const combo = document.querySelector('.goog-te-combo');
+        if (combo) {
+          combo.value = this.value;
+          fireNativeChangeEvent(combo);
+        }
+      });
+  });
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+</body>
 </html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | SaaSBooking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+	 *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333;
+    }
+	/*header*/
+     header {
+      background-color: #003366;
+      color: white;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #66ccff;
+    }
+	.user-image{position:relative;}
+	.user-image span{position:absolute;background:white;color:#333;top:48px;left:25px;padding:0.25rem 0;border-radius:3px;width:100%;text-align:center;display:none;}
+	.user-image b{font-weight:normal;margin-left:0.5em;position:relative;top:2px;}
+	.user-image:hover span{display:block;color: #003366;}
+	.user-image span:hover{text-decoration:underline;}
+    .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 998; }
+	.user-image img{width:24px;height:24px;border-radius:50%;display:inline-block;}
+    #languageSwitcher {
+      background-color: white;
+      color: #003366;
+      font-weight: 600;
+    }
+	.mobile-menu{display:none;}
+	/*footer*/
+	.underline{text-decoration:none;}
+	.underline:hover{text-decoration:underline;}
+	
+    .lang-switcher {
+      margin-left: 30px;
+    }
+
+    .lang-switcher select {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+    }
+@media (max-width: 767px) {
+.meet-our-team{text-align:left;}
+}
+@media (max-width: 640px) {
+	/*header*/
+	header{position:relative;}
+	header nav{position:absolute;width:100%;margin:0;left:0;top:60px;background:rgba(0,51,102,0.9);padding:1rem;border-top:#666 1px solid;}
+	.mobile-menu{display:block;}
+	.user-image span{position:relative;display:inline-block;left:0;top:0;background:none; color:rgba(255,255,255,0.7);float:right;text-decoration:underline;width:auto;}
+	/*footer*/
+	.underline{display:block;}
+	.underline span{display:none;}
+	footer p:first-child{margin-bottom:0.5em;}
+	.mobile-menu{background:rgb(17 24 39);padding:0.3rem 0.5em;border-radius:5px;}
+	.mobile-menu b{display:block;border-radius:3px;background-color:white;width:30px;height:3px;margin:3px 0;}
+	header nav.flex{display:none;}
+	header nav a{display:block;text-decoration: none;font-weight: 500;transition: color 0.3s;margin:0 !important;padding:0.5rem; }
+	#languageSwitcher{margin:0.5rem !important;width:-webkit-fill-available;}
+	
+}
+	</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+ <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 shadow">
+    <div class="text-xl font-bold">GTSS</div>
+    <nav class="space-x-6 flex items-center">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="text-blue-300 font-semibold">About</a>
+      <a href="booking.html">Booking</a>
+      <a href="login.html">Login</a>
+	  
+	  <!-- <a href="#" class="user-image"><img src="https://img-s.msn.cn/tenant/amp/entityid/AA11fKUj?w=20&h=0&q=90&m=6&f=png&u=t"><b>UserName</b><span>Logout</span></a>  --> <!--登录后显示用户头像，这里需要写一下鼠标移入头像显示logout的功能-->
+	  
+	  
+      <select id="languageSwitcher" class="ml-6 px-2 py-1 border rounded">
+        <option value="en">EN</option>
+        <option value="zh">中文</option>
+        <option value="jp">日本語</option>
+      </select>
+    </nav>
+	<!--移动端按钮-->
+	  <button class="mobile-menu"><b>&nbsp;</b><b>&nbsp;</b><b>&nbsp;</b></button>
+	</div>
+  </header>
+
+  <!-- Hero / Banner -->
+  <section class="text-center py-20 bg-blue-100">
+    <h1 class="text-4xl font-bold mb-4" id="about-title">Who We Are</h1>
+    <p class="text-lg max-w-2xl mx-auto" id="about-subtitle">
+      We build smart tools that help coaches, schools, and creators automate bookings, payments, and communication across platforms.
+    </p>
+  </section>
+
+  <!-- Content Section -->
+  <section class="px-8 py-16 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl font-semibold mb-4" id="mission-title">Our Mission</h2>
+        <p id="mission-text">
+          To simplify how small service providers connect with clients—no matter if they come from WeChat, Line, or Instagram.
+          We believe booking and payment should be seamless and smart.
+        </p>
+      </div>
+	  <!--这里原图片我加载不出来，随便改了一个地址-->
+     <!-- <img src="https://source.unsplash.com/featured/?team,technology" alt="Our team" class="rounded shadow">-->
+	  <img src="https://copyright.bdstatic.com/vcg/creative/46563d11f18f57716f7330a82d863324.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==" alt="Our team" class="rounded shadow">
+    </div>
+
+    <div class="mt-16 text-center meet-our-team">
+      <h2 class="text-2xl font-semibold mb-4" id="team-title">Meet Our Team</h2>
+      <p id="team-text">We are a group of designers, developers, and trainers from Shanghai, Tokyo, and New York working remotely across time zones.</p>
+    </div>
+  </section>
+
+ <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center p-6 mt-12">
+    <p>© 2025 GTSS Language School Ⓡ </p>
+	<p>
+		<a href="terms.html" class="underline"> Terms of Service<span> | </span></a>
+    <a href="privacy.html" class="underline"> Privacy Policy<span> | </span></a>
+    <a href="trading.html" class="underline"> 特定商取引法に基づく表記</a>
+	</p>
+  </footer>
+ <!---引入JQUERY库-->
+ <script src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+  <script>
+   <!--移动端点击展现menu-->
+   $(".mobile-menu").click(function() {
+	$("nav.items-center").slideToggle();
+});
+    const translations = {
+      en: {
+        aboutTitle: "Who We Are",
+        aboutSubtitle: "We build smart tools that help coaches, schools, and creators automate bookings, payments, and communication across platforms.",
+        missionTitle: "Our Mission",
+        missionText: "To simplify how small service providers connect with clients—no matter if they come from WeChat, Line, or Instagram. We believe booking and payment should be seamless and smart.",
+        teamTitle: "Meet Our Team",
+        teamText: "We are a group of designers, developers, and trainers from Shanghai, Tokyo, and New York working remotely across time zones."
+      },
+      zh: {
+        aboutTitle: "关于我们",
+        aboutSubtitle: "我们为教练、学校和创作者打造智能工具，实现跨平台预约、支付和沟通自动化。",
+        missionTitle: "我们的使命",
+        missionText: "简化中小服务提供者与客户的连接，无论客户来自微信、Line 还是 Instagram。我们致力于让预约和支付更智能、更顺畅。",
+        teamTitle: "我们的团队",
+        teamText: "我们是一支跨越上海、东京和纽约的远程团队，由设计师、开发者和行业专家组成。"
+      },
+      jp: {
+        aboutTitle: "私たちについて",
+        aboutSubtitle: "私たちは、コーチ、学校、クリエイター向けに、予約、支払い、通知を自動化するスマートなツールを開発しています。",
+        missionTitle: "私たちの使命",
+        missionText: "WeChat・LINE・Instagram など、どこから来たユーザーでも簡単につながれるよう、予約・支払いをシームレスにします。",
+        teamTitle: "チーム紹介",
+        teamText: "上海・東京・ニューヨークを拠点とするリモートチームです。デザイナー、開発者、現場経験者が揃っています。"
+      }
+    };
+
+    document.getElementById('languageSwitcher').addEventListener('change', (e) => {
+      const lang = e.target.value;
+      document.getElementById('about-title').innerText = translations[lang].aboutTitle;
+      document.getElementById('about-subtitle').innerText = translations[lang].aboutSubtitle;
+      document.getElementById('mission-title').innerText = translations[lang].missionTitle;
+      document.getElementById('mission-text').innerText = translations[lang].missionText;
+      document.getElementById('team-title').innerText = translations[lang].teamTitle;
+      document.getElementById('team-text').innerText = translations[lang].teamText;
+    });
+  </script>
+
+</body>
+</html>
